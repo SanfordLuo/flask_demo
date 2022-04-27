@@ -29,9 +29,15 @@ class Logger(object):
         if not filename:
             filename = f'{config.PROJECT_NAME}.log'
         if os.path.exists(config.BASE_PATH):
+            if not os.path.exists(f'{config.BASE_PATH}/logs'):
+                os.mkdir(f'{config.BASE_PATH}/logs')
+            if not os.path.exists(f'{config.BASE_PATH}/logs/{config.PROJECT_NAME}'):
+                os.mkdir(f'{config.BASE_PATH}/logs/{config.PROJECT_NAME}')
             filename = f'{config.BASE_PATH}/logs/{config.PROJECT_NAME}/{filename}'
         else:
             project_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            if not os.path.exists(f'{project_path}/logs'):
+                os.mkdir(f'{project_path}/logs')
             filename = f'{project_path}/logs/{filename}'
 
         self.logger = logging.getLogger()
