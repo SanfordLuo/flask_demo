@@ -27,7 +27,7 @@ class CustomFormatter(logging.Formatter):
 class Logger(object):
     def __init__(self, filename=None):
         if not filename:
-            filename = f'{config.PROJECT_NAME}.log'
+            filename = 'main.log'
         if os.path.exists(config.BASE_PATH):
             if not os.path.exists(f'{config.BASE_PATH}/logs'):
                 os.mkdir(f'{config.BASE_PATH}/logs')
