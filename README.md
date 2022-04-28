@@ -5,7 +5,7 @@
 
 ### 其他命令
 
-win与wsl文件复制：cp -a /mnt/d/flask_demo /home/lyf/sanford/apps/  
+win与wsl文件复制：cp -a /mnt/d/PyProject/flask_demo /home/lyf/sanford/apps/  
 查看进程：ps aux | grep python  
 查看端口占用情况：netstat -apn | grep 2378
 
