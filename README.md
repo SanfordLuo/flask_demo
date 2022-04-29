@@ -1,13 +1,38 @@
 # proj-manage
 
 项目管理相关，用于测试 docker、supervisor、nginx、uwsgi  
-开发环境：wsl
+开发环境：WSL2
 
 ### 其他命令
 
-win与wsl文件复制：cp -a /mnt/d/PyProject/proj-manage /home/lyf/sanford/apps/  
-查看进程：ps aux | grep python  
-查看端口占用情况：netstat -apn | grep 2378
+```
+# 在wsl中进入win中d盘中的PyProj
+cd /mnt/d/PyProj/
+
+# 在win中进入wsl中的lyf用户中
+cd \\wsl$\Ubuntu-20.04\home\lyf\
+
+# win与wsl文件复制
+cp -a /mnt/d/PyProject/proj-manage /home/lyf/sanford/apps/
+
+# 查看进程
+ps aux | grep python
+
+# 查看端口占用情况
+netstat -apn | grep 2378
+```
+
+### WSL2 安装配置
+
+```
+### 管理员权限下的 cmd 或 PowerShell
+
+# 设置wsl版本为2
+wsl --set-default-version 2
+
+# 查询wsl版本
+wsl -l -v
+```
 
 ### supervisor管理python服务
 
@@ -39,11 +64,29 @@ numprocs=4
 
 ###### 相关命令
 
-启动supervisor：supervisord -c /etc/supervisor/supervisord.conf  
-查看所有服务：supervisorctl status  
-停用：supervisorctl stop aaa  
-启动：supervisorctl start aaa  
-重启：supervisorctl restart aaa   
-配置文件修改后重新加载：supervisorctl update  
-重新启动配置中的所有程序：supervisorctl reload  
-进入：supervisorctl -c /etc/supervisor/supervisord.conf  
+```
+# 启动supervisor
+supervisord -c /etc/supervisor/supervisord.conf
+
+# 查看所有服务
+supervisorctl status
+
+# 停用
+supervisorctl stop aaa
+
+# 启动
+supervisorctl start aaa
+
+# 重启
+supervisorctl restart aaa
+
+# 配置文件修改后重新加载
+supervisorctl update
+
+# 重新启动配置中的所有程序
+supervisorctl reload
+
+# 进入
+supervisorctl -c /etc/supervisor/supervisord.conf
+```
+ 
