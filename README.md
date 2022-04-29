@@ -29,7 +29,7 @@ apt-get install supervisor
 supervisord.conf：全局的主要配置，默认不需要修改什么。需要关注的：logfile=/var/log/supervisor/supervisord.log；pidfile=/var/run/supervisord.pid  
 conf.d：存放子进程配置文件的一个文件夹  
 flask_demo_supervisor.conf：自定义的关于这个项目的配置文件  
-示例：[flask_demo_supervisor](/config/flask_demo_supervisor.conf)  
+示例：[flask_demo_supervisor](/config/proj_manage_supervisor.conf)  
 开启多个进程(没有端口冲突的情况下)：
 
 ```开启多个进程
