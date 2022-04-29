@@ -1,6 +1,6 @@
-# flask_demo
+# proj-manage
 
-用于测试 docker、flask、nginx、uwsgi  
+项目管理相关，用于测试 docker、supervisor、nginx、uwsgi  
 开发环境：wsl
 
 ### 其他命令
