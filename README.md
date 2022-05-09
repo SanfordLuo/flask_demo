@@ -19,6 +19,24 @@
 
 ### wsl2配置
 
+wsl 是 win 自带的 Ubuntu 系统，各种安装教程随便搜到处都是。  
+而 wsl2 相较于 wsl1 来说最大的一个区别就是 wsl2 有完整的 Linux 内核，wsl2 不再是文件夹形式存在于 win 盘中，而是会生成一个 ext4.vhdx 硬盘文件。  
+我这里用 wsl2 最大的一个作用就是想直接用 docker，下面会说，还有一个优点是 win 与 wsl 文件互传更方便。
+
+```
+### 管理员权限下的 cmd 或 PowerShell
+ 
+# 设置wsl版本为2
+wsl --set-default-version 2
+ 
+# 查询wsl版本
+wsl -l -v
+```
+
+![image](/static/wsl2-v.png)
+
+![image](/static/ext4-vhdx.png)
+
 ### 跨系统文件互传
 
 ### LxRunOffline管理工具
