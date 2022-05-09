@@ -2,11 +2,11 @@
 
 &emsp;[本文说明](/README.md#本文说明)  
 &emsp;[开发环境](/README.md#开发环境)  
-&emsp;&emsp;[wsl2 配置](/README.md#开发环境)  
-&emsp;&emsp;[跨系统文件互传](/README.md#开发环境)  
-&emsp;&emsp;[LxRunOffline 管理工具](/README.md#开发环境)  
-&emsp;&emsp;[修改国内镜像](/README.md#开发环境)  
-&emsp;&emsp;[virtualenvwrapper使用](/README.md#开发环境)
+&emsp;&emsp;[wsl2配置](/README.md#wsl2配置)  
+&emsp;&emsp;[跨系统文件互传](/README.md#跨系统文件互传)  
+&emsp;&emsp;[LxRunOffline管理工具](/README.md#LxRunOffline管理工具)  
+&emsp;&emsp;[修改国内镜像](/README.md#修改国内镜像)  
+&emsp;&emsp;[virtualenvwrapper使用](/README.md#virtualenvwrapper使用)
 
 ## 本文说明
 
@@ -16,6 +16,16 @@
 相关涉及：docker、supervisor、nginx、uwsgi
 
 ## 开发环境
+
+### wsl2-配置
+
+### 跨系统文件互传
+
+### LxRunOffline管理工具
+
+### 修改国内镜像
+
+### virtualenvwrapper使用
 
 ### 其他命令
 
