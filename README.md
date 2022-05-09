@@ -54,6 +54,23 @@ cd \\wsl$\Ubuntu-20.04\home\lyf\
 
 ### LxRunOffline管理工具
 
+用这东西主要是想把wsl安装的地址迁移一下，wsl默认是安装在c盘的。  
+官方下载地址: [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline/releases)  
+直接下载 xxx-msvc.zip 格式就行。安装，然后加入系统环境变量。比如我的是 D:\AppData\LxRunOffline-v3.5.0-msvc
+
+```
+### LxRunOffline 常用命令
+ 
+# 查看wsl版本
+LxRunOffline list
+ 
+# 移动（比如我的移动到指定位置 D:\Ubuntu）
+LxRunOffline move -n Ubuntu-20.04 -d D:\Ubuntu
+ 
+# 查看wsl的安装路径
+LxRunOffline di -n Ubuntu-20.04
+```
+
 ### 修改国内镜像
 
 ### virtualenvwrapper使用
