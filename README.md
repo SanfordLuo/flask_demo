@@ -39,6 +39,19 @@ wsl -l -v
 
 ### 跨系统文件互传
 
+相关命令行，知道下面两个命令就可以灵活的跨系统文件互传了。
+
+```
+# 在wsl中进入win中d盘中的PyProj
+cd /mnt/d/PyProj/
+ 
+# 在win中进入wsl中的lyf用户中
+cd \\wsl$\Ubuntu-20.04\home\lyf\
+```
+
+另外 win 系统上的 ide 也可直接编辑wsl中的文件，简直太方便了。  
+![image](/static/ide-open-ubuntu.png)
+
 ### LxRunOffline管理工具
 
 ### 修改国内镜像
