@@ -192,9 +192,12 @@ apt-get install supervisor
 
 supervisord.conf：全局的主要配置，默认不需要修改什么。需要关注的：logfile=/var/log/supervisor/supervisord.log；pidfile=/var/run/supervisord.pid  
 conf.d：存放子进程配置文件的一个文件夹  
-proj_manage_supvr.conf：自定义的关于这个项目的配置文件  
-示例：[proj_manage_supvr](/config/proj_manage_supvr.conf)
 
+proj_manage_supvr.conf：自定义的关于这个项目的配置文件  
+示例：[proj_manage_supvr.conf](/config/proj_manage_supvr.conf)
+```
+
+```
 开启多个进程，子进程配置文件添加下面两行配置(注意端口冲突)：
 
 ```开启多个进程
@@ -239,6 +242,55 @@ supervisorctl -c /etc/supervisor/supervisord.conf
 ```
 
 ### uwsgi使用
+
+安装(我是安装在python虚拟环境里了)：
+
+```
+pip install uwsgi
+```
+
+ini配置文件说明：  
+示例：[uwsgi.ini](/config/uwsgi.ini)
+
+```
+[uwsgi]
+;指定ip端口
+http = 0.0.0.0:2378
+;用户名
+uid = lyf
+;用户组
+gid = lyf
+;项目目录
+chdir = /home/lyf/sanford/apps/proj-manage
+;python项目的启动文件
+wsgi-file = /home/lyf/sanford/apps/proj-manage/main.py
+;python应用的实例名称
+callable = app
+;启用主进程
+master = true
+;进程数，同workers
+processes = 4
+;每个进程的线程数
+threads = 2
+;启动多进程时一般配置，每个进程worker加载应用一次，不配置的话其他进程是通过fork来的
+lazy-apps = true
+;允许启动多线程
+enable-threads = true
+;如果没有可以加载的应用，则退出
+need-app = true
+;在每个请求上启用tcp nodelay
+tcp-nodelay = true
+;设置监听队列大小
+listen = 128
+;创建pid文件
+pidfile = /tmp/proj-manage-uwsgi.pid
+;log文件
+logto = /home/lyf/sanford/logs/proj-manage/uwsgi.log
+;log日志记录master进程
+log-master = true
+;日志文件最大大小
+log-maxsize = 524288000
+```
 
 ### nginx使用
 
