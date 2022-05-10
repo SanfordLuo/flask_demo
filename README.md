@@ -191,16 +191,41 @@ apt-get install supervisor
 ```
 
 supervisord.conf：全局的主要配置，默认不需要修改什么。需要关注的：logfile=/var/log/supervisor/supervisord.log；pidfile=/var/run/supervisord.pid  
-conf.d：存放子进程配置文件的一个文件夹  
+conf.d：存放子进程配置文件的一个文件夹
 
 proj_manage_supvr.conf：自定义的关于这个项目的配置文件  
 示例：[proj_manage_supvr.conf](/config/proj_manage_supvr.conf)
-```
 
 ```
-开启多个进程，子进程配置文件添加下面两行配置(注意端口冲突)：
+# 组进程管理：组名
+[group:proj-manage]
+# 组进程包含的子进程名称，逗号隔开
+programs = main
 
-```开启多个进程
+# 子进程管理：进程名
+[program:main]
+# 启动program的命令
+command = /home/lyf/sanford/venv/py3/bin/python /home/lyf/sanford/apps/proj-manage/main.py
+# 项目路径
+directory = /home/lyf/sanford/apps/proj-manage
+# 进程名表达式
+process_name = %(program_name)s
+# 用户名
+user = lyf
+# 在supervisord启动的时候自动启动进程
+autostart = true
+# 当进程在running状态下exit时自动重启
+autorestart = true
+# 失败重启次数，超过则会FATAL
+startretries = 3
+# 进程的标准错误输出内容会被写入supervisord的标准输出stdout_logfile里
+redirect_stderr = true
+# 日志文件
+stdout_logfile = /home/lyf/sanford/logs/proj-manage/supvr-main.log
+# 日志级别
+loglevel = info
+
+# 开启多进程时（注意端口冲突）
 process_name=%(program_name)s_%(process_num)s
 numprocs=4
 ```
@@ -208,7 +233,7 @@ numprocs=4
 相关命令：
 
 ```
-# 启动supervisor
+# 启动supervisord
 supervisord -c /etc/supervisor/supervisord.conf
 
 # 查看所有服务
@@ -283,13 +308,23 @@ tcp-nodelay = true
 ;设置监听队列大小
 listen = 128
 ;创建pid文件
-pidfile = /tmp/proj-manage-uwsgi.pid
+pidfile = /var/run/proj-manage-uwsgi.pid
 ;log文件
 logto = /home/lyf/sanford/logs/proj-manage/uwsgi.log
 ;log日志记录master进程
 log-master = true
 ;日志文件最大大小
 log-maxsize = 524288000
+```
+
+相关命令：
+
+```
+# 启动
+uwsgi --ini uwsgi.ini
+
+# 停止
+uwsgi --stop /var/run/proj-manage-uwsgi.pid
 ```
 
 ### nginx使用
