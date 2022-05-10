@@ -6,7 +6,7 @@
 &emsp;&emsp;&emsp;[跨系统文件互传](/README.md#跨系统文件互传)  
 &emsp;&emsp;&emsp;[LxRunOffline管理工具](/README.md#LxRunOffline管理工具)  
 &emsp;&emsp;&emsp;[修改国内镜像](/README.md#修改国内镜像)  
-&emsp;&emsp;&emsp;[virtualenvwrapper使用](/README.md#virtualenvwrapper使用)
+&emsp;&emsp;&emsp;[virtualenvwrapper使用](/README.md#virtualenvwrapper使用)  
 &emsp;[项目管理](/README.md#项目管理)  
 &emsp;&emsp;&emsp;[一般启动](/README.md#一般启动)  
 &emsp;&emsp;&emsp;[supervisor使用](/README.md#supervisor使用)  
