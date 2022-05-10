@@ -73,7 +73,73 @@ LxRunOffline di -n Ubuntu-20.04
 
 ### 修改国内镜像
 
+本文以国内清华源为主。清华源官网: [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/)  
+常用的镜像：ubuntu，pypi，docker-ce
+
+Ubuntu-20.04镜像: [Ubuntu 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)  
+选择适合的版本，按照使用说明操作就行。我这里是Ubuntu-20.04的  
+![image](/static/tsinghua-ubuntu.png)
+
+PyPi镜像: [PyPi镜像说明](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
+
+```
+# 命令行配置PyPi镜像
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+ 
+# 执行完成后会在用户目录下生成相应的pip配置文件
+.config/
+└── pip
+    └── pip.conf
+```
+
 ### virtualenvwrapper使用
+
+virtualenvwrapper用于管理python的虚拟环境。
+
+安装:
+
+```
+pip install virtualenv
+pip install virtualenvwrapper
+```
+
+配置，在.bashrc文件里添加下面三行：vim .bashrc
+
+```
+# 安装的python路径，可用 `which python3` 查看
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+ 
+# 创建的虚拟环境存放的路径
+export WORKON_HOME=$HOME/sanford/venv
+ 
+#  用于激活virtualenvwrapper工具
+source /usr/local/bin/virtualenvwrapper.sh
+```
+
+加载修改后的配置
+
+```
+source ~/.bashrc
+```
+
+相关命令:
+
+```
+# 指定py版本创建虚拟环境
+mkvirtualenv -p python3 py3
+ 
+# 查看所有虚拟环境
+lsvirtualenv
+ 
+# 进入虚拟环境
+workon py3
+ 
+# 退出虚拟环境
+deactivate
+ 
+# 删除虚拟环境
+rmvirtualenv py3 
+```
 
 ### 其他命令
 
