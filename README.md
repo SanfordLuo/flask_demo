@@ -308,7 +308,7 @@ tcp-nodelay = true
 ;设置监听队列大小
 listen = 128
 ;创建pid文件
-pidfile = /var/run/proj-manage-uwsgi.pid
+pidfile = /home/lyf/sanford/proj-manage-uwsgi.pid
 ;log文件
 logto = /home/lyf/sanford/logs/proj-manage/uwsgi.log
 ;log日志记录master进程
@@ -321,11 +321,31 @@ log-maxsize = 524288000
 
 ```
 # 启动
-uwsgi --ini uwsgi.ini
+/home/lyf/sanford/venv/py3/bin/uwsgi --ini /home/lyf/sanford/apps/proj-manage/config/uwsgi.ini
 
 # 停止
-uwsgi --stop /var/run/proj-manage-uwsgi.pid
+/home/lyf/sanford/venv/py3/bin/uwsgi --stop /home/lyf/sanford/proj-manage-uwsgi.pid
 ```
+
+加入supervisor管理：
+
+```
+command = /home/lyf/sanford/venv/py3/bin/uwsgi --ini /home/lyf/sanford/apps/proj-manage/config/uwsgi.ini
+```
+
+uwsgi.log日志内容：
+
+```
+[2022-05-10 17:45:03,184] [INFO] [main.py:13] [77777] ===info===
+[2022-05-10 17:45:03,184] [ERROR] [main.py:14] [77777] ===err===
+[pid: 2332|app: 0|req: 3/3] 172.20.96.1 () {38 vars in 509 bytes} [Tue May 10 17:45:03 2022] GET /sanford => generated 46 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+```
+
+查看端口占用情况，确认是uwsgi占用的：  
+![image](/static/run-uwsgi.png)
+
+查看uwsgi进程：  
+![image](/static/run-uwsgi-1.png)
 
 ### nginx使用
 
