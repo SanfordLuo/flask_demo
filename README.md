@@ -2,11 +2,17 @@
 
 &emsp;[本文说明](/README.md#本文说明)  
 &emsp;[开发环境](/README.md#开发环境)  
-&emsp;&emsp;[wsl2配置](/README.md#wsl2配置)  
-&emsp;&emsp;[跨系统文件互传](/README.md#跨系统文件互传)  
-&emsp;&emsp;[LxRunOffline管理工具](/README.md#LxRunOffline管理工具)  
-&emsp;&emsp;[修改国内镜像](/README.md#修改国内镜像)  
-&emsp;&emsp;[virtualenvwrapper使用](/README.md#virtualenvwrapper使用)
+&emsp;&emsp;&emsp;[wsl2配置](/README.md#wsl2配置)  
+&emsp;&emsp;&emsp;[跨系统文件互传](/README.md#跨系统文件互传)  
+&emsp;&emsp;&emsp;[LxRunOffline管理工具](/README.md#LxRunOffline管理工具)  
+&emsp;&emsp;&emsp;[修改国内镜像](/README.md#修改国内镜像)  
+&emsp;&emsp;&emsp;[virtualenvwrapper使用](/README.md#virtualenvwrapper使用)
+&emsp;[项目管理](/README.md#项目管理)  
+&emsp;&emsp;&emsp;[一般启动](/README.md#一般启动)  
+&emsp;&emsp;&emsp;[supervisor使用](/README.md#supervisor使用)  
+&emsp;&emsp;&emsp;[uwsgi使用](/README.md#uwsgi使用)  
+&emsp;&emsp;&emsp;[nginx使用](/README.md#nginx使用)
+&emsp;&emsp;&emsp;[docker使用](/README.md#docker使用)
 
 ## 本文说明
 
@@ -140,6 +146,16 @@ deactivate
 # 删除虚拟环境
 rmvirtualenv py3 
 ```
+
+## 项目管理
+
+### 一般启动
+
+### supervisor使用
+
+### uwsgi使用
+
+### docker使用
 
 ### 其他命令
 
