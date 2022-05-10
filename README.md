@@ -11,7 +11,7 @@
 &emsp;&emsp;&emsp;[一般启动](/README.md#一般启动)  
 &emsp;&emsp;&emsp;[supervisor使用](/README.md#supervisor使用)  
 &emsp;&emsp;&emsp;[uwsgi使用](/README.md#uwsgi使用)  
-&emsp;&emsp;&emsp;[nginx使用](/README.md#nginx使用)
+&emsp;&emsp;&emsp;[nginx使用](/README.md#nginx使用)  
 &emsp;&emsp;&emsp;[docker使用](/README.md#docker使用)
 
 ## 本文说明
