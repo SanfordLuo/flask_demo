@@ -8,6 +8,7 @@
 &emsp;&emsp;&emsp;[修改国内镜像](/README.md#修改国内镜像)  
 &emsp;&emsp;&emsp;[virtualenvwrapper使用](/README.md#virtualenvwrapper使用)  
 &emsp;[项目管理](/README.md#项目管理)  
+&emsp;&emsp;&emsp;[相关命令](/README.md#相关命令)  
 &emsp;&emsp;&emsp;[一般启动](/README.md#一般启动)  
 &emsp;&emsp;&emsp;[supervisor使用](/README.md#supervisor使用)  
 &emsp;&emsp;&emsp;[uwsgi使用](/README.md#uwsgi使用)  
@@ -149,54 +150,38 @@ rmvirtualenv py3
 
 ## 项目管理
 
-### 一般启动
-
-### supervisor使用
-
-### uwsgi使用
-
-### docker使用
-
-### 其他命令
+### 相关命令
 
 ```
-# 在wsl中进入win中d盘中的PyProj
-cd /mnt/d/PyProj/
-
-# 在win中进入wsl中的lyf用户中
-cd \\wsl$\Ubuntu-20.04\home\lyf\
-
-# win与wsl文件复制
-cp -a /mnt/d/PyProject/proj-manage /home/lyf/sanford/apps/
+# 查看端口占用情况
+netstat -apn | grep 2378
 
 # 查看进程
 ps aux | grep python
 
-# 查看端口占用情况
-netstat -apn | grep 2378
+# 杀死进程
+kill -9 pid
 ```
 
-### WSL2 安装配置
+### 一般启动
+
+执行main.py文件，或者将启动命令放入sh文件
 
 ```
-### 管理员权限下的 cmd 或 PowerShell
-
-# 设置wsl版本为2
-wsl --set-default-version 2
-
-# 查询wsl版本
-wsl -l -v
+/home/lyf/sanford/venv/py3/bin/python /home/lyf/sanford/apps/proj-manage/main.py
 ```
 
-### supervisor管理python服务
+![image](/static/run-main.png)
 
-###### 安装
+### supervisor使用
+
+安装：
 
 ```
 apt-get install supervisor
 ```
 
-###### 配置文件说明
+配置文件说明：
 
 ```
 /etc/supervisor/
@@ -208,15 +193,16 @@ apt-get install supervisor
 supervisord.conf：全局的主要配置，默认不需要修改什么。需要关注的：logfile=/var/log/supervisor/supervisord.log；pidfile=/var/run/supervisord.pid  
 conf.d：存放子进程配置文件的一个文件夹  
 proj_manage_supvr.conf：自定义的关于这个项目的配置文件  
-示例：[proj_manage_supvr](/config/proj_manage_supvr.conf)  
-开启多个进程(没有端口冲突的情况下)：
+示例：[proj_manage_supvr](/config/proj_manage_supvr.conf)
+
+开启多个进程，子进程配置文件添加下面两行配置(注意端口冲突)：
 
 ```开启多个进程
 process_name=%(program_name)s_%(process_num)s
 numprocs=4
 ```
 
-###### 相关命令
+相关命令：
 
 ```
 # 启动supervisor
@@ -243,4 +229,17 @@ supervisorctl reload
 # 进入
 supervisorctl -c /etc/supervisor/supervisord.conf
 ```
- 
+
+![image](/static/run-supervisorctl.png)
+
+```
+[2022-05-10 11:08:11,801] [INFO] [main.py:13] [77777] ===info===
+[2022-05-10 11:08:11,801] [ERROR] [main.py:14] [77777] ===err===
+[2022-05-10 11:08:11,801] [INFO] [_internal.py:224] [] 172.20.96.1 - - [10/May/2022 11:08:11] "GET /sanford HTTP/1.1" 200 -
+```
+
+### uwsgi使用
+
+### nginx使用
+
+### docker使用
