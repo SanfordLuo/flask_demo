@@ -349,4 +349,50 @@ uwsgi.log日志内容：
 
 ### nginx使用
 
+安装：
+
+```
+sudo apt-get install nginx
+```
+
+相关文件说明：
+
+```
+/usr/sbin/nginx：主程序
+/etc/nginx：存放配置文件
+/usr/share/nginx：存放静态文件
+/var/log/nginx：存放日志
+
+# 主要配置文件说明
+/etc/nginx/
+├── conf.d
+│   └── proj_manage_nginx.conf
+├── nginx.conf
+```
+
+nginx.conf：全局的主要配置文件，默认不需要修改什么。需要关注的：include /etc/nginx/conf.d/*.conf; 导入了conf.d里的子配置文件。  
+conf.d：存放子配置文件的一个文件夹，也可以把配置直接加到nginx.conf，只不过多了的话会显得乱乱的。
+
+相关命令：
+
+```
+# 查看版本
+nginx -v
+
+# 启动nginx服务
+nginx
+
+# 重新载入配置并重启
+nginx -s reload
+
+# 检查配置文件
+nginx -t
+
+# 停止服务
+nginx -s stop
+```
+
+启动后在浏览器输入ip地址，出现下面页面则证明安装成功了  
+![image](/static/nginx-start.png)
+
 ### docker使用
