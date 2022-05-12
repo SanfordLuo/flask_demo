@@ -365,13 +365,14 @@ sudo apt-get install nginx
 
 # 主要配置文件说明
 /etc/nginx/
-├── conf.d
-│   └── proj_manage_nginx.conf
-├── nginx.conf
+├── conf.d  # 存放子配置文件的一个文件夹
+│   └── proj_manage_nginx.conf  # 子配置文件示例
+├── nginx.conf  # 全局的主配置文件
 ```
 
-nginx.conf：全局的主要配置文件，默认不需要修改什么。需要关注的：include /etc/nginx/conf.d/*.conf; 导入了conf.d里的子配置文件。  
-conf.d：存放子配置文件的一个文件夹，也可以把配置直接加到nginx.conf，只不过多了的话会显得乱乱的。
+nginx.conf 一般配置及相关说明：[nginx.conf](/config/nginx.conf)
+/usr/share/nginx 下的静态文件示例：[index.html](/static/nginx_html/index.html), [404.html](/static/nginx_html/404.html)
+, [50x.html](/static/nginx_html/50x.html)
 
 相关命令：
 
@@ -392,7 +393,13 @@ nginx -t
 nginx -s stop
 ```
 
-启动后在浏览器输入ip地址，出现下面页面则证明安装成功了  
-![image](/static/nginx-start.png)
+测试index  
+![image](/static/nginx-index.png)
+
+测试404  
+![image](/static/nginx-404.png)
+
+测试50x  
+![image](/static/nginx-50x.png)
 
 ### docker使用
