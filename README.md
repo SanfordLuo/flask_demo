@@ -372,7 +372,7 @@ sudo apt-get install nginx
 
 /etc/nginx/nginx.conf 一般配置及相关说明：[nginx.conf](/config/nginx.conf)  
 /usr/share/nginx 下的静态文件示例：[index.html](/static/nginx_html/index.html), [404.html](/static/nginx_html/404.html), [50x.html](/static/nginx_html/50x.html)  
-/etc/nginx/conf.d 下的子配置文件示例：[nginx.conf](/config/test.conf)
+/etc/nginx/conf.d 下的子配置文件示例：[test.conf](/config/test.conf)
 
 相关命令：
 
