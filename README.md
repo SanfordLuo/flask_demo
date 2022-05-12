@@ -392,13 +392,13 @@ nginx -t
 nginx -s stop
 ```
 
-测试index  
+测试index：  
 ![image](/static/nginx-index.png)
 
-测试404  
+测试404：  
 ![image](/static/nginx-404.png)
 
-测试50x  
+测试50x：  
 ![image](/static/nginx-50x.png)
 
 ### docker使用
