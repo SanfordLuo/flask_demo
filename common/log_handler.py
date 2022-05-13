@@ -8,7 +8,7 @@ from logging.handlers import TimedRotatingFileHandler
 from config import config
 
 
-class CustomFormatter(logging.Formatter):
+class LogFormatter(logging.Formatter):
 
     @property
     def request_id(self):
@@ -42,7 +42,7 @@ class Logger(object):
 
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.INFO)
-        self.formatter = CustomFormatter(
+        self.formatter = LogFormatter(
             '[%(asctime)s] [%(levelname)s] [%(filename)s:%(lineno)d] [%(request_id)s] %(message)s')
 
         self.file_handler = TimedRotatingFileHandler(filename, when='MIDNIGHT', interval=1, backupCount=7)
