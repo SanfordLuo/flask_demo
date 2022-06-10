@@ -236,6 +236,9 @@ numprocs=4
 # 启动supervisord
 supervisord -c /etc/supervisor/supervisord.conf
 
+# 停用
+supervisorctl shutdown
+
 # 查看所有服务
 supervisorctl status
 
