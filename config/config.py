@@ -1,2 +1,2 @@
-BASE_PATH = '/home/lyf/sanford'
+BASE_PATH = '/sanford'
 PROJECT_NAME = 'proj-manage'

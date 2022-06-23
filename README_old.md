@@ -1,26 +1,26 @@
-- [proj-manage](#proj-manage)
-  - [本文说明](#本文说明)
-  - [开发环境](#开发环境)
-    - [wsl2配置](#wsl2配置)
-    - [跨系统文件互传](#跨系统文件互传)
-    - [LxRunOffline管理工具](#lxrunoffline管理工具)
-    - [修改国内镜像](#修改国内镜像)
-    - [virtualenvwrapper使用](#virtualenvwrapper使用)
-  - [项目管理](#项目管理)
-    - [相关命令](#相关命令)
-    - [一般启动](#一般启动)
-    - [supervisor使用](#supervisor使用)
-    - [uwsgi使用](#uwsgi使用)
-    - [nginx使用](#nginx使用)
-    - [docker使用](#docker使用)
 # proj-manage
+
+&emsp;[本文说明](/README.md#本文说明)  
+&emsp;[开发环境](/README.md#开发环境)  
+&emsp;&emsp;&emsp;[wsl2配置](/README.md#wsl2配置)  
+&emsp;&emsp;&emsp;[跨系统文件互传](/README.md#跨系统文件互传)  
+&emsp;&emsp;&emsp;[LxRunOffline管理工具](/README.md#LxRunOffline管理工具)  
+&emsp;&emsp;&emsp;[修改国内镜像](/README.md#修改国内镜像)  
+&emsp;&emsp;&emsp;[virtualenvwrapper使用](/README.md#virtualenvwrapper使用)  
+&emsp;[项目管理](/README.md#项目管理)  
+&emsp;&emsp;&emsp;[相关命令](/README.md#相关命令)  
+&emsp;&emsp;&emsp;[一般启动](/README.md#一般启动)  
+&emsp;&emsp;&emsp;[supervisor使用](/README.md#supervisor使用)  
+&emsp;&emsp;&emsp;[uwsgi使用](/README.md#uwsgi使用)  
+&emsp;&emsp;&emsp;[nginx使用](/README.md#nginx使用)  
+&emsp;&emsp;&emsp;[docker使用](/README.md#docker使用)
 
 ## 本文说明
 
 项目管理相关  
 开发语言：python  
 开发环境：WSL2  
-相关涉及：docker、supervisor、nginx、uwsgi、kafka
+相关涉及：docker、supervisor、nginx、uwsgi
 
 ## 开发环境
 
@@ -31,9 +31,7 @@ wsl 是 win 自带的 Ubuntu 系统，各种安装教程随便搜到处都是。
 我这里用 wsl2 最大的一个作用就是想直接用 docker，下面会说，还有一个优点是 win 与 wsl 文件互传更方便。
 
 ```
-
 ### 管理员权限下的 cmd 或 PowerShell
-
  
 # 设置wsl版本为2
 wsl --set-default-version 2
@@ -54,12 +52,11 @@ wsl -l -v
 # 在wsl中进入win中d盘中的PyProj
 cd /mnt/d/PyProj/
  
-# 在win中进入wsl中的root用户中
+# 在win中进入wsl中的lyf用户中
 cd \\wsl$\Ubuntu-20.04\home\lyf\
 ```
 
 另外 win 系统上的 ide 也可直接编辑wsl中的文件，简直太方便了。  
-
 ![image](/static/ide-open-ubuntu.png)
 
 ### LxRunOffline管理工具
@@ -69,9 +66,7 @@ cd \\wsl$\Ubuntu-20.04\home\lyf\
 直接下载 xxx-msvc.zip 格式就行。安装，然后加入系统环境变量。比如我的是 D:\AppData\LxRunOffline-v3.5.0-msvc
 
 ```
-
 ### LxRunOffline 常用命令
-
  
 # 查看wsl版本
 LxRunOffline list
@@ -90,7 +85,6 @@ LxRunOffline di -n Ubuntu-20.04
 
 Ubuntu-20.04镜像: [Ubuntu 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)  
 选择适合的版本，按照使用说明操作就行。我这里是Ubuntu-20.04的  
-
 ![image](/static/tsinghua-ubuntu.png)
 
 PyPi镜像: [PyPi镜像说明](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
@@ -174,7 +168,7 @@ kill -9 pid
 执行main.py文件，或者将启动命令放入sh文件
 
 ```
-/usr/bin/python3 /sanford/apps/proj-manage/main.py
+/home/lyf/sanford/venv/py3/bin/python /home/lyf/sanford/apps/proj-manage/main.py
 ```
 
 ![image](/static/run-main.png)
@@ -351,11 +345,9 @@ uwsgi.log日志内容：
 ```
 
 查看端口占用情况，确认是uwsgi占用的：  
-
 ![image](/static/run-uwsgi.png)
 
 查看uwsgi进程：  
-
 ![image](/static/run-uwsgi-1.png)
 
 ### nginx使用
@@ -405,19 +397,15 @@ nginx -s stop
 ```
 
 测试index：  
-
 ![image](/static/nginx-index.png)
 
 测试404：  
-
 ![image](/static/nginx-404.png)
 
 测试50x：  
-
 ![image](/static/nginx-50x.png)
 
 测试子配置文件（监听的7777端口）
-
 ![image](/static/nginx-7777.png)
 
 ### docker使用
