@@ -1,8 +1,9 @@
+import logging
 from flask import Flask
-from common.utils import format_resp
-from common import log_handler
+from utils import util_func, util_logger
 
-logger = log_handler.Logger().logger
+util_logger.set_logger_config("main")
+logger = logging.getLogger("main")
 
 app = Flask(__name__)
 
@@ -13,7 +14,7 @@ def hello_world():
     logger.info('===info===')
     logger.error('===err===')
 
-    return format_resp(data=data)
+    return util_func.format_resp(data=data)
 
 
 if __name__ == '__main__':
