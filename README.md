@@ -167,6 +167,9 @@ ps aux | grep python
 
 # 杀死进程
 kill -9 pid
+
+# 后台启动
+nohup python3 main.py &
 ```
 
 ### 一般启动
