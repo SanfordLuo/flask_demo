@@ -12,6 +12,7 @@
     - [supervisor使用](#supervisor使用)
     - [uwsgi使用](#uwsgi使用)
     - [nginx使用](#nginx使用)
+      - [nginx监听5678端口转发到uwsgi服务的2378端口](#nginx监听5678端口转发到uwsgi服务的2378端口)
     - [docker使用](#docker使用)
 # proj-manage
 
@@ -42,9 +43,9 @@ wsl --set-default-version 2
 wsl -l -v
 ```
 
-![image](/static/wsl2-v.png)
+![image](./static/wsl2-v.png)
 
-![image](/static/ext4-vhdx.png)
+![image](./static/ext4-vhdx.png)
 
 ### 跨系统文件互传
 
@@ -60,7 +61,7 @@ cd \\wsl$\Ubuntu-20.04\home\lyf\
 
 另外 win 系统上的 ide 也可直接编辑wsl中的文件，简直太方便了。  
 
-![image](/static/ide-open-ubuntu.png)
+![image](./static/ide-open-ubuntu.png)
 
 ### LxRunOffline管理工具
 
@@ -91,7 +92,7 @@ LxRunOffline di -n Ubuntu-20.04
 Ubuntu-20.04镜像: [Ubuntu 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)  
 选择适合的版本，按照使用说明操作就行。我这里是Ubuntu-20.04的  
 
-![image](/static/tsinghua-ubuntu.png)
+![image](./static/tsinghua-ubuntu.png)
 
 PyPi镜像: [PyPi镜像说明](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
 
@@ -180,7 +181,7 @@ nohup python3 main.py &
 /usr/bin/python3 /sanford/apps/proj-manage/main.py
 ```
 
-![image](/static/run-main.png)
+![image](./static/run-main.png)
 
 ### supervisor使用
 
@@ -203,7 +204,7 @@ supervisord.conf：全局的主要配置，默认不需要修改什么。需要�
 conf.d：存放子进程配置文件的一个文件夹
 
 proj_manage_supvr.conf：自定义的关于这个项目的配置文件  
-示例：[proj_manage_supvr.conf](/config/proj_manage_supvr.conf)
+示例：[proj_manage_supvr.conf](./config/proj_manage_supvr.conf)
 
 ```
 # 组进程管理：组名
@@ -270,7 +271,7 @@ supervisorctl reload
 supervisorctl -c /etc/supervisor/supervisord.conf
 ```
 
-![image](/static/run-supervisorctl.png)
+![image](./static/run-supervisorctl.png)
 
 ```
 [2022-05-10 11:08:11,801] [INFO] [main.py:13] [77777] ===info===
@@ -287,7 +288,7 @@ pip install uwsgi
 ```
 
 ini配置文件说明：  
-示例：[uwsgi.ini](/config/uwsgi.ini)
+示例：[uwsgi.ini](./config/uwsgi.ini)
 
 ```
 [uwsgi]
@@ -355,11 +356,11 @@ uwsgi.log日志内容：
 
 查看端口占用情况，确认是uwsgi占用的：  
 
-![image](/static/run-uwsgi.png)
+![image](./static/run-uwsgi.png)
 
 查看uwsgi进程：  
 
-![image](/static/run-uwsgi-1.png)
+![image](./static/run-uwsgi-1.png)
 
 ### nginx使用
 
@@ -384,9 +385,9 @@ sudo apt-get install nginx
 ├── nginx.conf  # 全局的主配置文件
 ```
 
-/etc/nginx/nginx.conf 一般配置及相关说明：[nginx.conf](/config/nginx.conf)  
-/usr/share/nginx 下的静态文件示例：[index.html](/static/nginx_html/index.html), [404.html](/static/nginx_html/404.html), [50x.html](/static/nginx_html/50x.html)  
-/etc/nginx/conf.d 下的子配置文件示例：[test.conf](/config/test.conf)
+/etc/nginx/nginx.conf 一般配置及相关说明：[nginx.conf](./config/nginx.conf)  
+/usr/share/nginx 下的静态文件示例：[index.html](./static/nginx_html/index.html), [404.html](./static/nginx_html/404.html), [50x.html](./static/nginx_html/50x.html)  
+/etc/nginx/conf.d 下的子配置文件示例：[test_nginx.conf](./config/test_nginx.conf)
 
 相关命令：
 
@@ -407,20 +408,26 @@ nginx -t
 nginx -s stop
 ```
 
-测试index：  
+测试index：http://localhost/  
 
-![image](/static/nginx-index.png)
+![image](./static/nginx-index.png)
 
-测试404：  
+测试404：http://localhost/test_404  
 
-![image](/static/nginx-404.png)
+![image](./static/nginx-404.png)
 
-测试50x：  
+测试50x：http://localhost/test_50x  
 
-![image](/static/nginx-50x.png)
+![image](./static/nginx-50x.png)
 
-测试子配置文件（监听的7777端口）
+测试子配置文件（监听的7777端口）：http://localhost:7777
 
-![image](/static/nginx-7777.png)
+![image](./static/nginx-7777.png)
+
+#### nginx监听5678端口转发到uwsgi服务的2378端口
+
+配置文件：[proj_manage_nginx.conf](./config/proj_manage_nginx.conf)  
+启动 uwsgi、nginx  
+访问：http://localhost:5678/sanford
 
 ### docker使用

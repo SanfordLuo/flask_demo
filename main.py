@@ -2,8 +2,8 @@ import logging
 from flask import Flask
 from utils import util_func, util_logger
 
-util_logger.set_logger_config("main")
-logger = logging.getLogger("main")
+util_logger.set_logger_config("proj-manage")
+logger = logging.getLogger("proj-manage")
 
 app = Flask(__name__)
 
