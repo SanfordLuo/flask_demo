@@ -1,17 +1,17 @@
 from flask import jsonify
 
 
-def format_resp(code=0, msg='', data=None):
+def format_resp(code=0, message='', data=None):
     """
     格式化输出
     :param code:
-    :param msg:
+    :param message:
     :param data:
     :return:
     """
     ret_dict = {
         'code': code,
-        'msg': msg,
+        'message': message,
         'data': {}
     }
     if data:
